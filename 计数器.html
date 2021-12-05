@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<style>
+			.container {
+				align-items: center;
+				display: flex;
+				justify-content: center;
+				font-size:xx-large;
+			}
+		</style>
+		<div id="app">
+			<div class = "container">
+			<button @click="sub">-</button>
+			<span>{{num}}</span>
+			<button @click="add">+</button>
+			</div>
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+
+		<script>
+			var app = new Vue({
+				el: "#app",
+				data: {
+					num: 1
+				},
+				methods: {
+					sub: function() {
+						if (this.num > 0) {
+							this.num--;
+						} else {
+							alert("到底了")
+						}
+					},
+					add: function() {
+						if (this.num < 10) {
+							this.num++;
+						} else {
+							alert("到头了")
+						}
+					},
+					changeFood: function() {
+						this.food += "好好吃"
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

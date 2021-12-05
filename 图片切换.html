@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<a href="javascript:void(0)" @click="prev" v-show="index != 0">上一张</a>
+			<img :src="imgArray[index]" style="width: 300px; height: 200px;"/> 
+			<a href="javascript:void(0)" @click="next" v-show="index < imgArray.length - 1">下一张</a>
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+
+		<script>
+			var app = new Vue({
+				el: "#app",
+				data: {
+					imgArray:[
+						"./img/火行居所.png",
+						"./img/蔚蓝.png",
+						"./img/蔚蓝全家福.png",
+						"./img/雾山五行.png",
+					],
+					index:0,
+				},
+				methods: {
+					prev: function() {
+						this.index--;
+						},
+					next: function() {
+						this.index++;
+					},
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="wrap" id="app">
+			<div class="play_wrap" id="player">
+				<div class="search_bar">
+					<input type="text"  autocomplete="off" v-model="query" @keyup.enter="searchMusic"/>
+				</div>
+				<div class="center_con">
+					<div class="song_wrapper">
+						<ul class="song_list">
+							<li v-for="item in musiclist">
+								<a href="javascript:;" @click="playMusic(item.id)">播放</a>
+								<b>{{item.name}}</b>
+								<span v-if="item.mvid!=0" @click="playMv(item.mvid)"><i>播放mv</i></span>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="player_con" align="top|center" :class="{playing:isPlaying}">
+					<img :src="imgUrl"  class="cover autoRotate"/>
+				</div>
+				<div class="common_list">
+					<dl v-for="item in hotComments">
+						<dt><img :src="item.user.avatarUrl"></dt>
+						<dd class="name">{{item.nickname}}</dd>
+						<dd class="detail">{{item.content}}</dd>
+					</dl>
+				</div>
+				<div class="audio_con" @click="hide">
+					<audio ref="audio" @play="play" @pause="pause" :src="musicUrl" controls autoplay="true" loop="" class="myaudio"></audio>
+				</div>
+				<div class="video_con" v-show="isShow" style="display: none;">
+					<video :src="mvUrl" controls="controls"></video>
+				</div>
+			</div>
+		</div>
+		<script src="js/音乐播放器.js"></script>
+	</body>
+</html>

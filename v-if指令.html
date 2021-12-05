@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<input type="button" value="切换显示状态" @click="changeShow" />
+			<p v-if="isShow">	<!--v-if操纵dom树，直接将该元素删除掉，性能消耗大-->
+				Hello Vue!
+			</p>
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+
+		<script>
+			var app = new Vue({
+				el: "#app",
+				data: {
+					age:18,
+					isShow:true,
+				},
+				methods: {
+					changeShow: function() {
+						this.isShow  = !this.isShow
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
